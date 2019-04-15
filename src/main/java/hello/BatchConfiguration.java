@@ -26,6 +26,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
+	
 	@Autowired
 	public JobBuilderFactory jobBuilderFactory;
 	
@@ -39,7 +40,7 @@ public class BatchConfiguration {
 				.name("studentItemReader")
 				.resource(new ClassPathResource("sample-data.csv"))
 				.delimited()
-				.studentDetails(new String[] {"classroomId", "studentId", "studentFirstName", "studentMidInit", "studentLastName"})
+				.studentData(new String[] {"classroomId", "studentId", "studentFirstName", "studentMidInit", "studentLastName"})
 				.fieldSetMapper(new BeanWrapperFieldSetMapper<Student>() {{
 					setTargetType(Student.class);
 				}})
